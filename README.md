@@ -1,6 +1,6 @@
 先配置IDEA的maven仓库地址，用于在线自动下载包，默认的地址可能很慢
 
-![maven-picture](/Users/liuyitian/java/demo/maven-picture.png)
+![maven-picture](maven-picture.png)
 
 在设置里找到这个maven的配置文件地址，找到然后修改这个文件
 
