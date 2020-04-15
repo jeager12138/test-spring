@@ -1,31 +1,59 @@
 package com.example.demo.model;
 
 public class User {
-    private Integer id;
-    private Integer age;
-    private String name;
+    private Integer userId;
+    private String userName;
+    private String password;
+    private String authCode;
+    private String accessToken;
+    private int parentUserId;
 
-    public Integer getId() {
-        return id;
+
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAuthCode() {
+        return authCode;
+    }
+
+    public void setAuthCode(String authCode) {
+        this.authCode = authCode;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public int getParentUserId() {
+        return parentUserId;
+    }
+
+    public void setParentUserId(int parentUserId) {
+        this.parentUserId = parentUserId;
     }
 }
