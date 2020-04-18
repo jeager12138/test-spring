@@ -5,9 +5,8 @@ public class RS232Config {
     private int baudRate;
     private int dataBit;
     private int stopBit;
-    private String checked;
-    private String fluidControl;
-    private String controlMode;
+    private int checked;
+    private int controlMode;
     private int userId;
 
     public int getId() {
@@ -42,35 +41,27 @@ public class RS232Config {
         this.stopBit = stopBit;
     }
 
-    public String getChecked() {
-        return checked;
-    }
-
-    public void setChecked(String checked) {
-        this.checked = checked;
-    }
-
-    public String getFluidControl() {
-        return fluidControl;
-    }
-
-    public void setFluidControl(String fluidControl) {
-        this.fluidControl = fluidControl;
-    }
-
-    public String getControlMode() {
-        return controlMode;
-    }
-
-    public void setControlMode(String controlMode) {
-        this.controlMode = controlMode;
-    }
-
     public int getUserId() {
         return userId;
     }
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getChecked() {
+        return checked;
+    }
+
+    public void setChecked(int checked) {
+        this.checked = checked;
+    }
+
+    public int getControlMode() {
+        return controlMode;
+    }
+
+    public void setControlMode(int controlMode) {
+        this.controlMode = controlMode;
     }
 }

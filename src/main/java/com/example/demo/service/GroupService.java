@@ -12,12 +12,31 @@ public class GroupService {
     @Autowired
     GroupDao groupDao;
 
-    public List<Group> getRootByUserId(int userId) {
-        if(groupDao.getRoot(userId).isEmpty()) {
+    public Group getRootByUserId(int userId) {
+        if(groupDao.getRoot(userId)==null) {
             Group group = new Group(1, userId, 0, 0, 0, "root", "");
             groupDao.insertGroup(group);
         }
-        return groupDao.getRoot(userId);
+        Group root = groupDao.getRoot(userId);
+        root.setCanDelete(0);
+
+        root.setSons(getAllSon(root));
+        return root;
+    }
+
+    public Group[] getAllSon(Group god) {
+        if(groupDao.getGroupsByParentId(god.getId()).isEmpty()) {
+            god.setCanDelete(1);
+            Group[] son = new Group[0];
+            return son;
+        }
+        List<Group> groups = groupDao.getGroupsByParentId(god.getId());
+        Group[] son = new Group[groups.size()];
+        for(int i=0;i<groups.size();i++) {
+            son[i] = groups.get(i);
+            son[i].setSons(getAllSon(son[i]));
+        }
+        return son;
     }
 
     public Group getGroupById(int id) {

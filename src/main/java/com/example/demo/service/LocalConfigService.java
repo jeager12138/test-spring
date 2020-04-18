@@ -14,11 +14,11 @@ public class LocalConfigService {
     public LocalConfig getLocalConfigByUserId(int userid) {
         if(localConfigDao.getLocalConfig(userid) == null) {
             LocalConfig localConfig = new LocalConfig();
-            localConfig.setFileFormat("JPEG");
-            localConfig.setPlayPerformance("最短时延");
-            localConfig.setPosMsg("开启");
-            localConfig.setProtocolType("TCP");
-            localConfig.setRuleMsg("开启");
+            localConfig.setFileFormat(1);
+            localConfig.setPlayPerformance(1);
+            localConfig.setPosMsg(1);
+            localConfig.setProtocolType(1);
+            localConfig.setRuleMsg(1);
             localConfig.setUserId(userid);
 
             localConfigDao.insertLocalConfig(localConfig);

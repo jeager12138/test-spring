@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface ProofConfigDao {
     String TABLE_NAME = " proof_config_tbl ";
-    String INSERT_FIELDS = " rtsp_proof, web_proof, user_id ";
+    String INSERT_FIELDS = " device_serial, rtsp_proof, web_proof, user_id ";
     String SELECT_FIELDS = " id," + INSERT_FIELDS;
 
 
@@ -19,10 +19,10 @@ public interface ProofConfigDao {
     ProofConfig getProofConfig(int userId);
 
 
-    @Insert({"insert into ", TABLE_NAME, " (", INSERT_FIELDS, ") values (#{rtspProof}, #{webProof}, #{userId})"})
+    @Insert({"insert into ", TABLE_NAME, " (", INSERT_FIELDS, ") values (#{deviceSerial}, #{rtspProof}, #{webProof}, #{userId})"})
     int insertProofConfig(ProofConfig proofConfig);
 
 
-    @Update({"update ", TABLE_NAME, " set rtsp_proof=#{rtspProof}, web_proof=#{webProof} where id=#{id}"})
+    @Update({"update ", TABLE_NAME, " set device_serial=#{deviceSerial}, rtsp_proof=#{rtspProof}, web_proof=#{webProof} where id=#{id}"})
     int updateProofConfigById(ProofConfig proofConfig);
 }

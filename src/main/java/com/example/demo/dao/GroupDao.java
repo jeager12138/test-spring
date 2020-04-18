@@ -13,7 +13,7 @@ public interface GroupDao {
     String SELECT_FIELDS = " id," + INSERT_FIELDS;
 
     @Select({"select * from ", TABLE_NAME, " where user_id = #{userId} and node_level=0"})
-    List<Group> getRoot(int userId);
+    Group getRoot(int userId);
 
     @Select({"select * from ", TABLE_NAME, " where parent_id = #{parentId}"})
     List<Group> getGroupsByParentId(int parentId);

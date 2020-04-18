@@ -2,11 +2,11 @@ package com.example.demo.model;
 
 public class LocalConfig {
     private int id;
-    private String protocolType;
-    private String playPerformance;
-    private String fileFormat;
-    private String ruleMsg;
-    private String posMsg;
+    private int protocolType;
+    private int playPerformance;
+    private int fileFormat;
+    private int ruleMsg;
+    private int posMsg;
     private int userId;
 
     public int getId() {
@@ -17,43 +17,43 @@ public class LocalConfig {
         this.id = id;
     }
 
-    public String getProtocolType() {
+    public int getProtocolType() {
         return protocolType;
     }
 
-    public void setProtocolType(String protocolType) {
+    public void setProtocolType(int protocolType) {
         this.protocolType = protocolType;
     }
 
-    public String getPlayPerformance() {
+    public int getPlayPerformance() {
         return playPerformance;
     }
 
-    public void setPlayPerformance(String playPerformance) {
+    public void setPlayPerformance(int playPerformance) {
         this.playPerformance = playPerformance;
     }
 
-    public String getFileFormat() {
+    public int getFileFormat() {
         return fileFormat;
     }
 
-    public void setFileFormat(String fileFormat) {
+    public void setFileFormat(int fileFormat) {
         this.fileFormat = fileFormat;
     }
 
-    public String getRuleMsg() {
+    public int getRuleMsg() {
         return ruleMsg;
     }
 
-    public void setRuleMsg(String ruleMsg) {
+    public void setRuleMsg(int ruleMsg) {
         this.ruleMsg = ruleMsg;
     }
 
-    public String getPosMsg() {
+    public int getPosMsg() {
         return posMsg;
     }
 
-    public void setPosMsg(String posMsg) {
+    public void setPosMsg(int posMsg) {
         this.posMsg = posMsg;
     }
 

@@ -4,6 +4,7 @@ package com.example.demo.controller;
 import com.example.demo.model.LocalConfig;
 import com.example.demo.model.ProofConfig;
 import com.example.demo.model.RS232Config;
+import com.example.demo.model.Safe;
 import com.example.demo.service.LocalConfigService;
 import com.example.demo.service.SystemConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,17 +38,15 @@ public class SystemConfigController {
     @ResponseBody
     public Map<String, Object> updateRS232Config(@RequestBody Map m) {
         int id = Integer.parseInt(m.get("id").toString());
-        String checked = m.get("checked").toString();
-        String fluidControl = m.get("fluidControl").toString();
-        String controlMode = m.get("controlMode").toString();
         int baudRate = Integer.parseInt(m.get("baudRate").toString());
         int dataBit = Integer.parseInt(m.get("dataBit").toString());
         int stopBit = Integer.parseInt(m.get("stopBit").toString());
+        int checked = Integer.parseInt(m.get("checked").toString());
+        int controlMode = Integer.parseInt(m.get("controlMode").toString());
 
         RS232Config rs232Config = new RS232Config();
         rs232Config.setId(id);
         rs232Config.setChecked(checked);
-        rs232Config.setFluidControl(fluidControl);
         rs232Config.setControlMode(controlMode);
         rs232Config.setBaudRate(baudRate);
         rs232Config.setDataBit(dataBit);
@@ -76,13 +75,15 @@ public class SystemConfigController {
     @ResponseBody
     public Map<String, Object> updateProofConfig(@RequestBody Map m) {
         int id = Integer.parseInt(m.get("id").toString());
-        String webProof = m.get("webProof").toString();
-        String rtspProof = m.get("rtspProof").toString();
+        int webProof = Integer.parseInt(m.get("webProof").toString());
+        int rtspProof = Integer.parseInt(m.get("rtspProof").toString());
+        String deviceSerial = m.get("deviceSerial").toString();
 
         ProofConfig proofConfig = new ProofConfig();
         proofConfig.setId(id);
         proofConfig.setWebProof(webProof);
         proofConfig.setRtspProof(rtspProof);
+        proofConfig.setDeviceSerial(deviceSerial);
 
         systemConfigService.updateProofConfig(proofConfig);
 
@@ -90,4 +91,34 @@ public class SystemConfigController {
         ret.put("code", 0);
         return ret;
     }
+
+    @RequestMapping(path = {"/getSafeConfig"})
+    @ResponseBody
+    public Map<String, Object> getSafeConfig(@RequestBody Map m) {
+        int userId = Integer.parseInt(m.get("userId").toString());
+
+        Safe safe = systemConfigService.getSafeByUserId(userId);
+
+        Map<String, Object> ret = new HashMap<>();
+        ret.put("safe", safe);
+        return ret;
+    }
+
+    @RequestMapping(path = {"/updateSafeConfig"})
+    @ResponseBody
+    public Map<String, Object> updateSafeConfig(@RequestBody Map m) {
+        int userId = Integer.parseInt(m.get("userId").toString());
+        int safeMode = Integer.parseInt(m.get("safeMode").toString());
+
+        Safe safee = new Safe();
+        safee.setUserId(userId);
+        safee.setSafeMode(safeMode);
+        systemConfigService.updateSafe(safee);
+
+        Map<String, Object> ret = new HashMap<>();
+        ret.put("code", 0);
+        return ret;
+    }
+
+
 }

@@ -3,8 +3,9 @@ package com.example.demo.model;
 public class ProofConfig {
     private int id;
     private int userId;
-    private String rtspProof;
-    private String webProof;
+    private String deviceSerial;
+    private int rtspProof;
+    private int webProof;
 
     public int getId() {
         return id;
@@ -22,19 +23,27 @@ public class ProofConfig {
         this.userId = userId;
     }
 
-    public String getRtspProof() {
+    public int getRtspProof() {
         return rtspProof;
     }
 
-    public void setRtspProof(String rtspProof) {
+    public void setRtspProof(int rtspProof) {
         this.rtspProof = rtspProof;
     }
 
-    public String getWebProof() {
+    public int getWebProof() {
         return webProof;
     }
 
-    public void setWebProof(String webProof) {
+    public void setWebProof(int webProof) {
         this.webProof = webProof;
+    }
+
+    public String getDeviceSerial() {
+        return deviceSerial;
+    }
+
+    public void setDeviceSerial(String deviceSerial) {
+        this.deviceSerial = deviceSerial;
     }
 }

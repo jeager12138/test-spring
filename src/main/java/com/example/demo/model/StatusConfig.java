@@ -8,11 +8,11 @@ public class StatusConfig {
     private int battryStatus;
     private int diskNum;
     private int cloudStatus;
-    private int userId;
+    private String deviceSerial;
 
     public StatusConfig(){}
 
-    public StatusConfig(int id, int privacyStatus, int pirStatus, int alarmSoundMode, int battryStatus, int diskNum, int cloudStatus, int userId) {
+    public StatusConfig(int id, int privacyStatus, int pirStatus, int alarmSoundMode, int battryStatus, int diskNum, int cloudStatus, String deviceSerial) {
         this.id = id;
         this.privacyStatus = privacyStatus;
         this.pirStatus = pirStatus;
@@ -20,7 +20,7 @@ public class StatusConfig {
         this.battryStatus = battryStatus;
         this.diskNum = diskNum;
         this.cloudStatus = cloudStatus;
-        this.userId = userId;
+        this.deviceSerial = deviceSerial;
     }
 
 
@@ -80,11 +80,11 @@ public class StatusConfig {
         this.cloudStatus = cloudStatus;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getDeviceSerial() {
+        return deviceSerial;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setDeviceSerial(String deviceSerial) {
+        this.deviceSerial = deviceSerial;
     }
 }

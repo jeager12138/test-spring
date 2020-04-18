@@ -23,19 +23,10 @@ public class GroupController {
     @ResponseBody
     public Map<String, Object> getRootGroup(@RequestBody Map m) {
         int userId = Integer.parseInt(m.get("userId").toString());
+        Group root = groupService.getRootByUserId(userId);
 
         Map<String, Object> ret = new HashMap<>();
         ret.put("node", groupService.getRootByUserId(userId));
-        return ret;
-    }
-
-    @RequestMapping(path = {"/getSonGroup"})
-    @ResponseBody
-    public Map<String, Object> getSonGroup(@RequestBody Map m) {
-        int id = Integer.parseInt(m.get("id").toString());
-
-        Map<String, Object> ret = new HashMap<>();
-        ret.put("node", groupService.getGroupListByParentId(id));
         return ret;
     }
 
@@ -66,7 +57,7 @@ public class GroupController {
 
         groupService.addGroup(son);
         Map<String, Object> ret = new HashMap<>();
-        ret.put("code", 0);
+        ret.put("node", groupService.getRootByUserId(group.getUserId()));
         return ret;
     }
 

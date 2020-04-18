@@ -8,6 +8,8 @@ public class Group {
     private int parentId;
     private String nodeName;
     private String deviceSerial;
+    private int canDelete;
+    private Group[] sons;
 
     public Group(){}
     public Group(int id, int userId, int nodeType, int nodeLevel, int parentId, String nodeName, String deviceSerial) {
@@ -74,5 +76,21 @@ public class Group {
 
     public void setDeviceSerial(String deviceSerial) {
         this.deviceSerial = deviceSerial;
+    }
+
+    public Group[] getSons() {
+        return sons;
+    }
+
+    public void setSons(Group[] sons) {
+        this.sons = sons;
+    }
+
+    public int getCanDelete() {
+        return canDelete;
+    }
+
+    public void setCanDelete(int canDelete) {
+        this.canDelete = canDelete;
     }
 }

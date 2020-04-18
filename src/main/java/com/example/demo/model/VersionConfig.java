@@ -5,16 +5,16 @@ public class VersionConfig {
     private String latestVersion;
     private String currentVersion;
     private int isNeedUpgrade;
-    private int userId;
+    private String deviceSerial;
 
     public VersionConfig() {
 
     }
 
-    public VersionConfig(int id, int isNeedUpgrade, int userId, String latestVersion, String currentVersion) {
+    public VersionConfig(int id, int isNeedUpgrade, String deviceSerial, String latestVersion, String currentVersion) {
         this.id =id;
         this.isNeedUpgrade = isNeedUpgrade;
-        this.userId=userId;
+        this.deviceSerial = deviceSerial;
         this.latestVersion=latestVersion;
         this.currentVersion=currentVersion;
     }
@@ -51,11 +51,12 @@ public class VersionConfig {
         this.isNeedUpgrade = isNeedUpgrade;
     }
 
-    public int getUserId() {
-        return userId;
+
+    public String getDeviceSerial() {
+        return deviceSerial;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setDeviceSerial(String deviceSerial) {
+        this.deviceSerial = deviceSerial;
     }
 }

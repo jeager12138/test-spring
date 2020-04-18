@@ -14,11 +14,10 @@ public class ChannelConfig {
     private int isEncrypt;
     private int videoLevel;
     private int relatedIpc;
-    private int userId;
 
     public ChannelConfig() {
     }
-    public ChannelConfig(int id, String deviceSerial, String ipcSerial, int channelNo, String deviceName, String channelName, int status, String isShared, String picUrl, int isEncrypt, int videoLevel, int relatedIpc, int userId) {
+    public ChannelConfig(int id, String deviceSerial, String ipcSerial, int channelNo, String deviceName, String channelName, int status, String isShared, String picUrl, int isEncrypt, int videoLevel, int relatedIpc) {
         this.id = id;
         this.deviceSerial = deviceSerial;
         this.ipcSerial = ipcSerial;
@@ -31,7 +30,6 @@ public class ChannelConfig {
         this.isEncrypt = isEncrypt;
         this.videoLevel = videoLevel;
         this.relatedIpc = relatedIpc;
-        this.userId = userId;
     }
 
     public String getDeviceSerial() {
@@ -130,11 +128,4 @@ public class ChannelConfig {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 }

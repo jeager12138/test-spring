@@ -2,7 +2,6 @@ package com.example.demo.model;
 
 public class BaseConfig {
     private int id;
-    private int userId;
     private int status;
     private int defence;
     private int isEncrypt;
@@ -14,9 +13,8 @@ public class BaseConfig {
     private String category;
 
     public BaseConfig(){}
-    public BaseConfig(int id, int userId, int status, int defence, int isEncrypt, int alarmSoundMode, int offlineNotify, String deviceSerial, String deviceName, String model, String category) {
+    public BaseConfig(int id, int status, int defence, int isEncrypt, int alarmSoundMode, int offlineNotify, String deviceSerial, String deviceName, String model, String category) {
         this.id = id;
-        this.userId = userId;
         this.status = status;
         this.defence = defence;
         this.isEncrypt = isEncrypt;
@@ -42,14 +40,6 @@ public class BaseConfig {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public int getDefence() {
