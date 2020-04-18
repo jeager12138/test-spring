@@ -1,10 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.model.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -36,6 +33,9 @@ public interface UserDao {
 
     @Select({"select * from ", TABLE_NAME, " where parent_user_id=#{parentId}"})
     List<User> getUserByParentId(int parentId);
+
+    @Delete({"delete from ", TABLE_NAME, " where user_id=#{userId}"})
+    void deleteSonByUserId(int userId);
 
 
 }

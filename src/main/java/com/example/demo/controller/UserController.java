@@ -180,6 +180,17 @@ public class UserController {
         return ret;
     }
 
+    @RequestMapping(path = {"/deleteSon"})
+    @ResponseBody
+    public Map<String, Object> deleteSon(@RequestBody Map m) {
+        Map<String, Object> ret = new HashMap<>();
+        int userId = Integer.parseInt(m.get("userId").toString());
+
+        userService.deleteSon(userId);
+        ret.put("code", 0);
+        return ret;
+    }
+
 
 
 }
