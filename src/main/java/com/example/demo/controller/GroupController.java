@@ -26,7 +26,7 @@ public class GroupController {
         Group root = groupService.getRootByUserId(userId);
 
         Map<String, Object> ret = new HashMap<>();
-        ret.put("node", groupService.getRootByUserId(userId));
+        ret.put("node", new Group[]{groupService.getRootByUserId(userId)});
         return ret;
     }
 
@@ -57,7 +57,7 @@ public class GroupController {
 
         groupService.addGroup(son);
         Map<String, Object> ret = new HashMap<>();
-        ret.put("node", groupService.getRootByUserId(group.getUserId()));
+        ret.put("node", new Group[]{groupService.getRootByUserId(group.getUserId())});
         return ret;
     }
 
