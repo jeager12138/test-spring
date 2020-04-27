@@ -71,6 +71,7 @@ public class UserController {
             ret.put("code", 0);
             ret.put("accessToken", user.getAccessToken());
             ret.put("userId", user.getUserId());
+            ret.put("parentId", user.getParentUserId());
             return ret;
         } else {
             ret.put("code", 1);
