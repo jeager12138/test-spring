@@ -11,7 +11,7 @@ import java.util.List;
 public interface UserDao {
 
     String TABLE_NAME = " user_tbl ";
-    String INSERT_FIELDS = " user_name, password, auth_code, access_token, parent_user_id ";
+    String INSERT_FIELDS = " user_name, password, auth_code, access_token, parent_user_id, mail_address";
     String SELECT_FIELDS = " user_id," + INSERT_FIELDS;
 
 //    其他使用方法：
@@ -24,12 +24,17 @@ public interface UserDao {
     @Select({"select * from ", TABLE_NAME, " where user_name = #{userName}"})
     User selectUserByName(String userName);
 
-    @Insert({"insert into ", TABLE_NAME, " (", INSERT_FIELDS, ") values (#{userName}, #{password}, #{authCode}, #{accessToken}, #{parentUserId})"})
+    @Select({"select * from ", TABLE_NAME, " where user_id = #{userId}"})
+    User selectUserById(int userId);
+
+    @Insert({"insert into ", TABLE_NAME, " (", INSERT_FIELDS, ") values (#{userName}, #{password}, #{authCode}, #{accessToken}, #{parentUserId}, #{mailAddress})"})
     int insertUser(User user);
 
     @Update({"update ", TABLE_NAME, " set password=#{password} where user_name=#{userName}"})
     int updateUserByUserName(User user);
 
+    @Update({"update ", TABLE_NAME, " set user_name=#{userName}, mail_address=#{mailAddress} where user_id=#{userId}"})
+    int updateUserByUserId(User user);
 
     @Select({"select * from ", TABLE_NAME, " where parent_user_id=#{parentId}"})
     List<User> getUserByParentId(int parentId);

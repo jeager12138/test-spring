@@ -7,6 +7,7 @@ public class User {
     private String authCode;
     private String accessToken;
     private int parentUserId;
+    private String mailAddress;
 
 
     public Integer getUserId() {
@@ -55,5 +56,13 @@ public class User {
 
     public void setParentUserId(int parentUserId) {
         this.parentUserId = parentUserId;
+    }
+
+    public String getMailAddress() {
+        return mailAddress;
+    }
+
+    public void setMailAddress(String mailAddress) {
+        this.mailAddress = mailAddress;
     }
 }

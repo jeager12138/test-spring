@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Auth;
 import com.example.demo.model.User;
+import com.example.demo.service.EmailService;
 import com.example.demo.service.UserService;
 import com.sun.corba.se.spi.ior.ObjectKey;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    EmailService emailService;
 
     @RequestMapping(path = {"/register"})
     @ResponseBody
@@ -72,6 +75,7 @@ public class UserController {
             ret.put("accessToken", user.getAccessToken());
             ret.put("userId", user.getUserId());
             ret.put("parentId", user.getParentUserId());
+            ret.put("mailAddress", user.getMailAddress());
             return ret;
         } else {
             ret.put("code", 1);
@@ -189,6 +193,48 @@ public class UserController {
 
         userService.deleteSon(userId);
         ret.put("code", 0);
+        return ret;
+    }
+
+    @RequestMapping(path = {"/postEmail"})
+    @ResponseBody
+    public Map<String, Object> postEmail(@RequestBody Map m) {
+        Map<String, Object> ret = new HashMap<>();
+        int userId = Integer.parseInt(m.get("userId").toString());
+        String mailAddress = m.get("mailAddress").toString();
+        String content = m.get("content").toString();
+
+        String authCode = userService.getUserById(userId).getAuthCode();
+
+        EmailService.send(mailAddress, content + "您的验证码是："+ authCode);
+        ret.put("code",0);
+        return ret;
+    }
+
+    @RequestMapping(path = {"/changeMailAndName"})
+    @ResponseBody
+    public Map<String, Object> changeMailAndName(@RequestBody Map m) {
+        Map<String, Object> ret = new HashMap<>();
+        int userId = Integer.parseInt(m.get("userId").toString());
+        String userName = m.get("userName").toString();
+        String mailAddress = m.get("mailAddress").toString();
+
+        User user = userService.getUserByName(userName);
+        if(user != null) {
+            ret.put("code", 1);
+            ret.put("message", "用户名重复");
+            return ret;
+        }
+
+        user = new User();
+        user.setUserId(userId);
+        user.setUserName(userName);
+        user.setMailAddress(mailAddress);
+
+        userService.changeMailAndName(user);
+
+        ret.put("code", 0);
+        ret.put("message", "OK");
         return ret;
     }
 

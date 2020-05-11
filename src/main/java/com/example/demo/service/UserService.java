@@ -60,6 +60,11 @@ public class UserService {
         authDao.insertAuth(auth);
     }
 
-    public  void deleteSon(int userId) { userDao.deleteSonByUserId(userId);}
+    public void deleteSon(int userId) { userDao.deleteSonByUserId(userId);}
 
+    public void changeMailAndName(User user) {userDao.updateUserByUserId(user);}
+
+    public User getUserById(int id) {
+        return userDao.selectUserById(id);
+    }
 }
