@@ -200,14 +200,25 @@ public class UserController {
     @ResponseBody
     public Map<String, Object> postEmail(@RequestBody Map m) {
         Map<String, Object> ret = new HashMap<>();
-        int userId = Integer.parseInt(m.get("userId").toString());
         String mailAddress = m.get("mailAddress").toString();
         String content = m.get("content").toString();
 
-        String authCode = userService.getUserById(userId).getAuthCode();
-
-        EmailService.send(mailAddress, content + "您的验证码是："+ authCode);
+        EmailService.send(mailAddress, content);
         ret.put("code",0);
+        return ret;
+    }
+
+    @RequestMapping(path={"/postAuthCode"})
+    @ResponseBody
+    public Map<String, Object> postAuthCode(@RequestBody Map m) {
+        Map<String, Object> ret = new HashMap<>();
+        int userId = Integer.parseInt(m.get("userId").toString());
+        String mailAddress = m.get("mailAddress").toString();
+
+        String authCode = userService.getUserById(userId).getAuthCode();
+        EmailService.send(mailAddress, "您的验证码是："+ authCode);
+
+        ret.put("code", 0);
         return ret;
     }
 
